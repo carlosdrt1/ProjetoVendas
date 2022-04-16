@@ -1,6 +1,4 @@
-
 package br.com.ferias.model;
-
 
 public class Cliente {
     private int id;
