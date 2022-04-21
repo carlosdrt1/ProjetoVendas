@@ -707,7 +707,7 @@ public class frmClientes extends javax.swing.JFrame {
         dao.salvarCliente(cli);
         
         new Utilitarios().limparTela(pClientes);
-
+        
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
