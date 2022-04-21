@@ -17,7 +17,7 @@ public class ClienteDAO {
     public ClienteDAO() {
         this.con = new ConnectionFactory().getConnection();
     }
-
+    
     public void salvarCliente(Cliente cli) {
         try {
             String sql = "insert into tb_clientes(nome, rg, cpf, email, telefone, celular, cep, endereco, numero, complemento, bairro, cidade, estado)"
