@@ -27,27 +27,30 @@ public class frmFuncionarios extends javax.swing.JFrame {
     }
 
     public void Listar() {
-        ClienteDAO dao = new ClienteDAO();
-        List<Cliente> clientes = dao.listarCliente();
+        FuncionarioDAO dao = new FuncionarioDAO();
+        List<Funcionario> funcionarios = dao.ListarFuncionarios();
         DefaultTableModel dados = (DefaultTableModel) tbFuncionarios.getModel();
         dados.setNumRows(0);
 
-        for (Cliente cliente : clientes) {
+        for (Funcionario funcionario : funcionarios) {
             dados.addRow(new Object[]{
-                cliente.getId(),
-                cliente.getNome(),
-                cliente.getRg(),
-                cliente.getCpf(),
-                cliente.getEmail(),
-                cliente.getTelefone(),
-                cliente.getCelular(),
-                cliente.getCep(),
-                cliente.getEndereco(),
-                cliente.getNumero(),
-                cliente.getComplemento(),
-                cliente.getBairro(),
-                cliente.getCidade(),
-                cliente.getEstado()
+                funcionario.getId(),
+                funcionario.getNome(),
+                funcionario.getRg(),
+                funcionario.getCpf(),
+                funcionario.getEmail(),
+                funcionario.getSenha(),
+                funcionario.getCargo(),
+                funcionario.getNivelAcesso(),
+                funcionario.getTelefone(),
+                funcionario.getCelular(),
+                funcionario.getCep(),
+                funcionario.getEndereco(),
+                funcionario.getNumero(),
+                funcionario.getComplemento(),
+                funcionario.getBairro(),
+                funcionario.getCidade(),
+                funcionario.getEstado()
             });
         }
     }

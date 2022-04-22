@@ -5,9 +5,6 @@
         <group>
             <file>file:/C:/Users/carlo/Programação/ProjetoFerias/vendas/src/br/com/ferias/view/frmFuncionarios.java</file>
             <file>file:/C:/Users/carlo/Programação/ProjetoFerias/vendas/src/br/com/ferias/dao/ClienteDAO.java</file>
-            <file>file:/C:/Users/carlo/Programação/ProjetoFerias/vendas/src/br/com/ferias/jdbc/ConnectionFactory.java</file>
-            <file>file:/C:/Users/carlo/Programação/ProjetoFerias/vendas/src/br/com/ferias/model/Funcionario.java</file>
-            <file>file:/C:/Users/carlo/Programação/ProjetoFerias/vendas/src/br/com/ferias/model/Utilitarios.java</file>
             <file>file:/C:/Users/carlo/Programação/ProjetoFerias/vendas/src/br/com/ferias/view/frmClientes.java</file>
             <file>file:/C:/Users/carlo/Programação/ProjetoFerias/vendas/src/br/com/ferias/dao/FuncionarioDAO.java</file>
         </group>
