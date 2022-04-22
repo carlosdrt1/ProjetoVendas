@@ -733,7 +733,7 @@ public class frmClientes extends javax.swing.JFrame {
         cli.setEstado(cbEstado.getSelectedItem().toString());
 
         cli.setId(Integer.parseInt(txtId.getText()));
-
+        
         ClienteDAO dao = new ClienteDAO();
         dao.editarCliente(cli);
         
@@ -771,7 +771,7 @@ public class frmClientes extends javax.swing.JFrame {
 
         ClienteDAO dao = new ClienteDAO();
         dao.deletarCliente(cli);
-        
+    
         new Utilitarios().limparTela(pClientes);
 
     }//GEN-LAST:event_btnExcluirActionPerformed

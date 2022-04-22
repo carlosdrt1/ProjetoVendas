@@ -28,7 +28,7 @@ public class frmFuncionarios extends javax.swing.JFrame {
 
     public void Listar() {
         FuncionarioDAO dao = new FuncionarioDAO();
-        List<Funcionario> funcionarios = dao.ListarFuncionarios();
+        List<Funcionario> funcionarios = dao.listarFuncionarios();
         DefaultTableModel dados = (DefaultTableModel) tbFuncionarios.getModel();
         dados.setNumRows(0);
 
@@ -793,26 +793,29 @@ public class frmFuncionarios extends javax.swing.JFrame {
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
         // TODO add your handling code here:
-        Cliente cli = new Cliente();
+        Funcionario func = new Funcionario();
 
-        cli.setNome(txtNome.getText());
-        cli.setRg(txtRg.getText());
-        cli.setCpf(txtCpf.getText());
-        cli.setEmail(txtEmail.getText());
-        cli.setTelefone(txtCargo.getText());
-        cli.setCelular(txtCelular.getText());
-        cli.setCep(txtCep.getText());
-        cli.setEndereco(txtEndereco.getText());
-        cli.setComplemento(txtComplemento.getText());
-        cli.setNumero(Integer.parseInt(txtNumero.getText()));
-        cli.setBairro(txtBairro.getText());
-        cli.setCidade(txtCidade.getText());
-        cli.setEstado(cbEstado.getSelectedItem().toString());
+        func.setNome(txtNome.getText());
+        func.setRg(txtRg.getText());
+        func.setCpf(txtCpf.getText());
+        func.setEmail(txtEmail.getText());
+        func.setSenha(txtSenha.getText());
+        func.setCargo(txtCargo.getText());
+        func.setNivelAcesso(cbNivel.getSelectedItem().toString());
+        func.setTelefone(txtTelefone.getText());
+        func.setCelular(txtCelular.getText());
+        func.setCep(txtCep.getText());
+        func.setEndereco(txtEndereco.getText());
+        func.setComplemento(txtComplemento.getText());
+        func.setNumero(Integer.parseInt(txtNumero.getText()));
+        func.setBairro(txtBairro.getText());
+        func.setCidade(txtCidade.getText());
+        func.setEstado(cbEstado.getSelectedItem().toString());
 
-        cli.setId(Integer.parseInt(txtId.getText()));
+        func.setId(Integer.parseInt(txtId.getText()));
 
-        ClienteDAO dao = new ClienteDAO();
-        dao.editarCliente(cli);
+        FuncionarioDAO dao = new FuncionarioDAO();
+        dao.editarFuncionario(func);
         
         new Utilitarios().limparTela(pFuncionarios);
     }//GEN-LAST:event_btnEditarActionPerformed
@@ -829,25 +832,29 @@ public class frmFuncionarios extends javax.swing.JFrame {
         txtRg.setText(tbFuncionarios.getValueAt(tbFuncionarios.getSelectedRow(), 2).toString());
         txtCpf.setText(tbFuncionarios.getValueAt(tbFuncionarios.getSelectedRow(), 3).toString());
         txtEmail.setText(tbFuncionarios.getValueAt(tbFuncionarios.getSelectedRow(), 4).toString());
-        txtCargo.setText(tbFuncionarios.getValueAt(tbFuncionarios.getSelectedRow(), 5).toString());
-        txtCelular.setText(tbFuncionarios.getValueAt(tbFuncionarios.getSelectedRow(), 6).toString());
-        txtCep.setText(tbFuncionarios.getValueAt(tbFuncionarios.getSelectedRow(), 7).toString());
-        txtEndereco.setText(tbFuncionarios.getValueAt(tbFuncionarios.getSelectedRow(), 8).toString());
-        txtNumero.setText(tbFuncionarios.getValueAt(tbFuncionarios.getSelectedRow(), 9).toString());
-        txtComplemento.setText(tbFuncionarios.getValueAt(tbFuncionarios.getSelectedRow(), 10).toString());
-        txtBairro.setText(tbFuncionarios.getValueAt(tbFuncionarios.getSelectedRow(), 11).toString());
-        txtCidade.setText(tbFuncionarios.getValueAt(tbFuncionarios.getSelectedRow(), 12).toString());
-        cbEstado.setSelectedItem(tbFuncionarios.getValueAt(tbFuncionarios.getSelectedRow(), 13).toString());
+        txtSenha.setText(tbFuncionarios.getValueAt(tbFuncionarios.getSelectedRow(),5).toString());
+        txtCargo.setText(tbFuncionarios.getValueAt(tbFuncionarios.getSelectedRow(),6).toString());
+        cbNivel.setSelectedItem(tbFuncionarios.getValueAt(tbFuncionarios.getSelectedRow(),7).toString());
+        txtTelefone.setText(tbFuncionarios.getValueAt(tbFuncionarios.getSelectedRow(), 8).toString());
+        txtCelular.setText(tbFuncionarios.getValueAt(tbFuncionarios.getSelectedRow(),9).toString());
+        txtCep.setText(tbFuncionarios.getValueAt(tbFuncionarios.getSelectedRow(),10).toString());
+        txtEndereco.setText(tbFuncionarios.getValueAt(tbFuncionarios.getSelectedRow(),11).toString());
+        txtNumero.setText(tbFuncionarios.getValueAt(tbFuncionarios.getSelectedRow(),12).toString());
+        txtComplemento.setText(tbFuncionarios.getValueAt(tbFuncionarios.getSelectedRow(),13).toString());
+        txtBairro.setText(tbFuncionarios.getValueAt(tbFuncionarios.getSelectedRow(),14).toString());
+        txtCidade.setText(tbFuncionarios.getValueAt(tbFuncionarios.getSelectedRow(), 15).toString());
+        cbEstado.setSelectedItem(tbFuncionarios.getValueAt(tbFuncionarios.getSelectedRow(),16).toString());
+        
     }//GEN-LAST:event_tbFuncionariosMouseClicked
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
         // TODO add your handling code here:
-        Cliente cli = new Cliente();
+        Funcionario func = new Funcionario();
         
-        cli.setId(Integer.parseInt(txtId.getText()));
+        func.setId(Integer.parseInt(txtId.getText()));
 
-        ClienteDAO dao = new ClienteDAO();
-        dao.deletarCliente(cli);
+        FuncionarioDAO dao = new FuncionarioDAO();
+        dao.deletarFuncionario(func);
         
         new Utilitarios().limparTela(pFuncionarios);
 

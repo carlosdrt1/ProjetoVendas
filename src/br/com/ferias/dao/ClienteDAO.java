@@ -64,9 +64,9 @@ public class ClienteDAO {
             stmt.setString(11, cli.getBairro());
             stmt.setString(12, cli.getCidade());
             stmt.setString(13, cli.getEstado());
-
+            
             stmt.setInt(14, cli.getId());
-
+            
             stmt.execute();
             stmt.close();
 
@@ -80,7 +80,7 @@ public class ClienteDAO {
         try {
             String sql = "DELETE FROM tb_clientes WHERE id = ?";
             PreparedStatement stmt = con.prepareStatement(sql);
-
+            
             stmt.setInt(1, cli.getId());
 
             stmt.execute();
