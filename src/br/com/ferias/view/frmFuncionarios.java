@@ -94,7 +94,7 @@ public class frmFuncionarios extends javax.swing.JFrame {
         txtCidade = new javax.swing.JFormattedTextField();
         jLabel15 = new javax.swing.JLabel();
         txtComplemento = new javax.swing.JFormattedTextField();
-        btnConsultaCliente = new javax.swing.JButton();
+        btnConsultaFuncionario = new javax.swing.JButton();
         jLabel16 = new javax.swing.JLabel();
         cbEstado = new javax.swing.JComboBox<>();
         jSeparator1 = new javax.swing.JSeparator();
@@ -282,11 +282,11 @@ public class frmFuncionarios extends javax.swing.JFrame {
             }
         });
 
-        btnConsultaCliente.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        btnConsultaCliente.setText("Pesquisar");
-        btnConsultaCliente.addActionListener(new java.awt.event.ActionListener() {
+        btnConsultaFuncionario.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnConsultaFuncionario.setText("Pesquisar");
+        btnConsultaFuncionario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnConsultaClienteActionPerformed(evt);
+                btnConsultaFuncionarioActionPerformed(evt);
             }
         });
 
@@ -348,7 +348,7 @@ public class frmFuncionarios extends javax.swing.JFrame {
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(txtCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(btnConsultaCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(btnConsultaFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(75, 75, 75)
                                         .addComponent(jLabel18))
                                     .addGroup(pFuncionariosLayout.createSequentialGroup()
@@ -437,7 +437,7 @@ public class frmFuncionarios extends javax.swing.JFrame {
                             .addComponent(txtRg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel5)
                             .addComponent(txtCpf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnConsultaCliente)
+                            .addComponent(btnConsultaFuncionario)
                             .addComponent(jLabel18))
                         .addGap(18, 18, 18)
                         .addGroup(pFuncionariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -645,28 +645,31 @@ public class frmFuncionarios extends javax.swing.JFrame {
         // TODO add your handling code here:
         String nome = "%"+txtPesquisarNome.getText()+"%";
         
-        ClienteDAO dao = new ClienteDAO();
-        List<Cliente> clientes = dao.buscarClienteNome(nome);
+        FuncionarioDAO dao = new FuncionarioDAO();
+        List<Funcionario> funcionarios = dao.buscarFuncionarioNome(nome);
         
         DefaultTableModel dados = (DefaultTableModel) tbFuncionarios.getModel();
         dados.setNumRows(0);
         
-        for (Cliente cliente : clientes) {
+        for (Funcionario funcionario : funcionarios) {
             dados.addRow(new Object[]{
-                cliente.getId(),
-                cliente.getNome(),
-                cliente.getRg(),
-                cliente.getCpf(),
-                cliente.getEmail(),
-                cliente.getTelefone(),
-                cliente.getCelular(),
-                cliente.getCep(),
-                cliente.getEndereco(),
-                cliente.getNumero(),
-                cliente.getComplemento(),
-                cliente.getBairro(),
-                cliente.getCidade(),
-                cliente.getEstado()
+                funcionario.getId(),
+                funcionario.getNome(),
+                funcionario.getRg(),
+                funcionario.getCpf(),
+                funcionario.getEmail(),
+                funcionario.getSenha(),
+                funcionario.getCargo(),
+                funcionario.getNivelAcesso(),
+                funcionario.getTelefone(),
+                funcionario.getCelular(),
+                funcionario.getCep(),
+                funcionario.getEndereco(),
+                funcionario.getNumero(),
+                funcionario.getComplemento(),
+                funcionario.getBairro(),
+                funcionario.getCidade(),
+                funcionario.getEstado()
             });
         }
     }//GEN-LAST:event_btnPesquisarActionPerformed
@@ -676,36 +679,39 @@ public class frmFuncionarios extends javax.swing.JFrame {
         new Utilitarios().limparTela(pFuncionarios);
     }//GEN-LAST:event_btnNovoActionPerformed
 
-    private void btnConsultaClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultaClienteActionPerformed
+    private void btnConsultaFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultaFuncionarioActionPerformed
         // TODO add your handling code here:
         String cpf = txtCpf.getText();
         
-        Cliente cli = new Cliente();
-        ClienteDAO dao = new ClienteDAO();
+        Funcionario func = new Funcionario();
+        FuncionarioDAO dao = new FuncionarioDAO();
         
-        cli = dao.consultarCliente(cpf);
+        func = dao.consultarFuncionario(cpf);
         
-        if (cli.getCpf() != null){
-            txtId.setText(String.valueOf(cli.getId()));
-            txtNome.setText(cli.getNome());
-            txtRg.setText(cli.getRg());
-            txtCpf.setText(cli.getCpf());
-            txtEmail.setText(cli.getEmail());
-            txtCargo.setText(cli.getTelefone());
-            txtCelular.setText(cli.getCelular());
-            txtCep.setText(cli.getCep());
-            txtEndereco.setText(cli.getEndereco());
-            txtNumero.setText(String.valueOf(cli.getNumero()));
-            txtComplemento.setText(cli.getComplemento());
-            txtBairro.setText(cli.getBairro());
-            txtCidade.setText(cli.getCidade());
-            cbEstado.setSelectedItem(cli.getEstado());
+        if (func.getCpf() != null){
+            txtId.setText(String.valueOf(func.getId()));
+            txtNome.setText(func.getNome());
+            txtRg.setText(func.getRg());
+            txtCpf.setText(func.getCpf());
+            txtEmail.setText(func.getEmail());
+            txtSenha.setText(func.getSenha());
+            txtCargo.setText(func.getCargo());
+            cbNivel.setSelectedItem(func.getNivelAcesso());
+            txtTelefone.setText(func.getTelefone());
+            txtCelular.setText(func.getCelular());
+            txtCep.setText(func.getCep());
+            txtEndereco.setText(func.getEndereco());
+            txtNumero.setText(String.valueOf(func.getNumero()));
+            txtComplemento.setText(func.getComplemento());
+            txtBairro.setText(func.getBairro());
+            txtCidade.setText(func.getCidade());
+            cbEstado.setSelectedItem(func.getEstado());
             
         } else {
-            JOptionPane.showMessageDialog(null, "Cliente não encontrado");
+            JOptionPane.showMessageDialog(null, "Funcionário não encontrado");
         }
         
-    }//GEN-LAST:event_btnConsultaClienteActionPerformed
+    }//GEN-LAST:event_btnConsultaFuncionarioActionPerformed
 
     private void txtComplementoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtComplementoActionPerformed
         // TODO add your handling code here:
@@ -918,7 +924,7 @@ public class frmFuncionarios extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnConsultaCliente;
+    private javax.swing.JButton btnConsultaFuncionario;
     private javax.swing.JButton btnEditar;
     private javax.swing.JButton btnExcluir;
     private javax.swing.JButton btnNovo;
