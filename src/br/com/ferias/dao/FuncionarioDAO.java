@@ -2,6 +2,7 @@ package br.com.ferias.dao;
 
 import br.com.ferias.jdbc.ConnectionFactory;
 import br.com.ferias.model.Funcionario;
+import br.com.ferias.model.WebServiceCep;
 import java.sql.PreparedStatement;
 import java.sql.Connection;
 import java.util.ArrayList;
@@ -216,6 +217,27 @@ public class FuncionarioDAO {
             JOptionPane.showMessageDialog(null, "Erro ao executar a pesquisa: \n"+e);
             return null;
         }
+    }
+    
+    public Funcionario buscaCep(String cep) {
+       
+        WebServiceCep webServiceCep = WebServiceCep.searchCep(cep);
+       
+
+        Funcionario func = new Funcionario();
+
+        if (webServiceCep.wasSuccessful()) {
+            func.setEndereco(webServiceCep.getLogradouroFull());
+            func.setCidade(webServiceCep.getCidade());
+            func.setBairro(webServiceCep.getBairro());
+            func.setEstado(webServiceCep.getUf());
+            return func;
+        } else {
+            JOptionPane.showMessageDialog(null, "Erro numero: " + webServiceCep.getResulCode());
+            JOptionPane.showMessageDialog(null, "Descrição do erro: " + webServiceCep.getResultText());
+            return null;
+        }
+
     }
     
 }
